@@ -31,3 +31,7 @@ deploy:
   # getting merged by GitHub into the master branch
   on:
     branch: master
+  # create these in the IAM service and add them to Travis, the names are 
+  # what the name value pair name is in Travis that you named it:
+  access_key_id: "$AWS_ACCESS_KEY"
+  secret_access_key: "$AWS_SECRET_KEY"
