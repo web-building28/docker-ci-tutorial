@@ -3,6 +3,7 @@ services:
   - docker
 
 before_install:
+  # careful which file is built here for the port mapping
   - docker build -t datanetwork22/docker-ci-tutorial -f Dockerfile.dev .
 
 script:
