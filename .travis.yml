@@ -7,3 +7,27 @@ before_install:
 
 script:
   - docker run -e CT=true datanetwork22/docker-ci-tutorial npm run test
+
+deploy:
+  # these are placeholders to instead use GitHub Actions
+  provider: elasticbeanstalk
+  # this region is what was selected for the beanstalk creation
+  region: "[us-west-2]"
+  # this is the app name from the beanstalk instance and is stated in the instance homepage title
+  app: "docker"
+  # the env is also in the instance title
+  env: "Docker-env"
+  # this bucket is listed under the S3 service
+  # and was automatically created from the beanstalk instance
+  bucket_name: "[bucket created automatically from elasticbeanstalk]"
+  # this is listed under the S3 bucket details
+  # this is inside the folder that is the name of the project
+  # the instance creation may not have that folder
+  # the folder may have to be created the first time the app is deployed to the
+  # beanstalk instance using this S3 bucket
+  # so the default path will begin as being exactly equal to the app name above
+  bucket_path: "docker"
+  # this makes Travis-CI run this deployment only on a pull request from a sub-branch
+  # getting merged by GitHub into the master branch
+  on:
+    branch: master
