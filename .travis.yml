@@ -1,0 +1,9 @@
+sudo: require
+services:
+  - docker
+
+before_install:
+  - docker build -t datanetwork22/docker-ci-tutorial -f Dockerfile.dev .
+
+script:
+  - docker run -e CT=true datanetwork22/docker-ci-tutorial npm run test
