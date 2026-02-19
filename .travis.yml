@@ -27,7 +27,7 @@ deploy:
   # the folder may have to be created the first time the app is deployed to the
   # beanstalk instance using this S3 bucket
   # so the default path will begin as being exactly equal to the app name above
-  bucket_path: "docker"
+  bucket_path: "docker- poss. issue"
   # this makes Travis-CI run this deployment only on a pull request from a sub-branch
   # getting merged by GitHub into the master branch
   on:
