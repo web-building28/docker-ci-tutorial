@@ -7,6 +7,7 @@ const homePageStyles = {
 }
 
 const Homepage: React.FC = () => {
+
   return (
     <>
       <Navigation />
