@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, LegendPayload } from 'recharts';
 import Navigation from '../navigation/Navigation'
+import ChatWindow from '../navigation/ChatWindow'
 
 const trackingStyles = {
   main: {
@@ -97,6 +98,7 @@ const Tracking: React.FC = () => {
       <Navigation />
       <main style={trackingStyles.main}>
         <p>tracking</p>
+        <ChatWindow />
         <BarChart
           style={{ width: '100%', maxWidth: '700px', maxHeight: '70vh', aspectRatio: 1.618 }}
           responsive

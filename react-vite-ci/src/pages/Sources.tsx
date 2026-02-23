@@ -1,5 +1,6 @@
 import { ScatterChart, Scatter, XAxis, YAxis, CartesianGrid, Tooltip } from 'recharts'
 import Navigation from '../navigation/Navigation'
+import ChatWindow from '../navigation/ChatWindow'
 
 const sourcesStyles = {
   main: {
@@ -46,6 +47,7 @@ const Sources: React.FC = () => {
       <Navigation />
       <main style={sourcesStyles.main}>
         <p>sources</p>
+        <ChatWindow />
            <ScatterChart
               style={{ width: '100%', maxWidth: '700px', maxHeight: '70vh', aspectRatio: 1.618 }}
               responsive

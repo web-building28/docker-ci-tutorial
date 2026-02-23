@@ -10,6 +10,7 @@ import {
   TooltipValueType,
 } from 'recharts';
 import Navigation from '../navigation/Navigation'
+import ChatWindow from '../navigation/ChatWindow'
 
 const industryStyles = {
   main: {
@@ -82,6 +83,7 @@ const Industry: React.FC = ({ defaultIndex }: { defaultIndex?: number }) => {
       <Navigation />
       <main style={industryStyles.main}>
         <p>industry</p>
+        <ChatWindow />
         <BarChart
           data={percentageData}
           layout="vertical"

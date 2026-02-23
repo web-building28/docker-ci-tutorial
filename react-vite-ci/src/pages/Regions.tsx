@@ -1,5 +1,6 @@
 import { CartesianGrid, Legend, Line, LineChart, Tooltip, XAxis, YAxis } from 'recharts';
 import Navigation from '../navigation/Navigation'
+import ChatWindow from '../navigation/ChatWindow'
 
 const regionsStyles = {
   main: {
@@ -67,6 +68,7 @@ const Regions: React.FC = () => {
       <Navigation />
       <main style={regionsStyles.main}>
         <p>regions</p>
+        <ChatWindow />
           <LineChart
             style={{ width: '100%', maxWidth: '700px', maxHeight: '70vh', aspectRatio: 1.618 }}
             responsive

@@ -1,5 +1,6 @@
 import { Pie, PieChart, Tooltip, TooltipIndex } from 'recharts';
 import Navigation from '../navigation/Navigation'
+import ChatWindow from '../navigation/ChatWindow'
 
 const projectStyles = {
   main: {
@@ -49,6 +50,7 @@ const Project: React.FC = ({
       <Navigation />
       <main style={projectStyles.main}>
         <p>project</p>
+        <ChatWindow />
           <PieChart
           style={{ width: '100%', height: '100%', maxWidth: '500px', maxHeight: '80vh', aspectRatio: 1 }}
           responsive
