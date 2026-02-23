@@ -2,10 +2,25 @@ import { ScatterChart, Scatter, XAxis, YAxis, CartesianGrid, Tooltip } from 'rec
 import Navigation from '../navigation/Navigation'
 import Footer from '../navigation/Footer'
 import ChatWindow from '../navigation/ChatWindow'
+import SolarBackground from '../assets/SolarBackground.png'
 
 const sourcesStyles = {
   main: {
-    
+
+  },
+  barTitle: {
+    marginTop: '1em',
+    textAlign: 'center',
+    alignItems: 'center',
+    fontSize: '28px'
+  },
+  backgroundImage: {
+    backgroundImage: `url(${SolarBackground})`,
+    backgroundSize: 'contain'
+  },
+  homeGraph: {
+    display: 'flex',
+    justifyContent: 'center'
   }
 }
 
@@ -47,9 +62,14 @@ const Sources: React.FC = () => {
     <>
       <Navigation />
       <main style={sourcesStyles.main}>
-        <p>sources</p>
         <ChatWindow />
-           <ScatterChart
+        <div style={sourcesStyles.barTitle}>
+          Comparison of Coal versus Solar Panels<br/>
+          Mass Consumption By Net Revenue
+        </div>
+        <section style={sourcesStyles.backgroundImage}>
+          <div style={sourcesStyles.homeGraph}>
+            <ScatterChart
               style={{ width: '100%', maxWidth: '700px', maxHeight: '70vh', aspectRatio: 1.618 }}
               responsive
               margin={{
@@ -76,6 +96,8 @@ const Sources: React.FC = () => {
               <Scatter yAxisId="left" name="A school" data={data01} fill="#8884d8" />
               <Scatter yAxisId="right" name="A school" data={data02} fill="#82ca9d" />
             </ScatterChart>
+          </div>
+        </section>
       </main>
       <Footer />
     </>

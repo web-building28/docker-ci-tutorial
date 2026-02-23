@@ -255,6 +255,7 @@ const Project: React.FC = ({
     <>
       <Navigation />
       <main style={projectStyles.main}>
+        <ChatWindow />
         <div style={projectStyles.projectsTitle}>Solar Industry Projects - Highlighted Insights</div>
         <div style={projectStyles.projectsSummary}>
           Key projects in the solar industry are aimed at improving 
@@ -266,7 +267,6 @@ const Project: React.FC = ({
           seeking more effective statistics through fast,
           plotted webs of human capital.
         </div>
-        <ChatWindow />
         <div style={projectStyles.projects}>
           <div style={projectStyles.projectCardWrapper}>
               <div style={projectStyles.cardTitleIcon} >

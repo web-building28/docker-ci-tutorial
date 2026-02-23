@@ -19,17 +19,9 @@ const navigationStyles = {
     fontColor: 'black',
     fontSize: '50px',
   },
-  company: {
+  subTitles: {
     fontColor: 'black',
-    fontSize: '32px',
-  },
-  projectCompany: {
-    fontColor: 'black',
-    fontSize: '32px',
-  },
-  websiteOwner: {
-    fontColor: 'black',
-    fontSize: '32px',
+    fontSize: '18px',
   },
   container: {
     textAlign: 'center',
@@ -81,9 +73,9 @@ const Navigation: React.FC = () => {
       <header>
         <section style={navigationStyles.titles}>
           <div style={navigationStyles.websiteTitle}>Solar Panel Industry Statistical Analysis</div>
-          <div style={navigationStyles.company}>Department of Economics</div>
-          <div style={navigationStyles.projectCompany}>Reported by Project Data Enterprises</div>
-          <div style={navigationStyles.websiteOwner}>Director: George Payne</div>
+          <div style={navigationStyles.subTitles}>Department of Economics</div>
+          <div style={navigationStyles.subTitles}>Reported by Project Data Enterprises</div>
+          <div style={navigationStyles.subTitles}>Director: George Payne</div>
         </section>
         <div style={navigationStyles.header}>
           <nav>

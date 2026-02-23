@@ -139,8 +139,8 @@ const Homepage: React.FC = () => {
     <>
       <Navigation />
       <main style={homePageStyles.main}>
-        <div style={homePageStyles.homepageTitle}>Solar Power - Industrial Insights</div>
         <ChatWindow />
+        <div style={homePageStyles.homepageTitle}>Solar Power - Industrial Insights</div>
         <div style={homePageStyles.introGrid}>
           <div style={homePageStyles.gridItem1}>
             The energy supply of society has evolved into a combination of
@@ -155,7 +155,7 @@ const Homepage: React.FC = () => {
             <br />
             <br />
             Energy in the economy is more similar to energy in nature than most believe it is.
-            Often, when we hear oil, hydro-power, wind power, nuclear power, and solar power called "energy" we get the feeling of a superficial definition that lacks details in commerce and lacks effort in explaining what is energy. However, the energy sector, albeit less human, is equally dynamic and elusive in regards to the changes in time, source, type, and multitude as the substance of energy in relation to energy versus matter, and also energy as emotions or feelings.
+            Often, when we hear oil, hydro-power, coal, wind power, nuclear power, and solar power called "energy" we get the feeling of a superficial definition that lacks details in commerce and lacks effort in explaining what is energy. However, the energy sector, albeit less human, is equally dynamic and elusive in regards to the changes in time, source, type, and multitude as the substance of energy in relation to energy versus matter, and also energy as emotions or feelings.
             <br />
             <br />
             <img

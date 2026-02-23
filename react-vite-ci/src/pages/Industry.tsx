@@ -12,10 +12,22 @@ import {
 import Navigation from '../navigation/Navigation'
 import Footer from '../navigation/Footer'
 import ChatWindow from '../navigation/ChatWindow'
+import ConsumerPower from '../assets/ConsumerPower.svg'
 
 const industryStyles = {
   main: {
     
+  },
+  industryPageTitle: {
+    margin: '2em',
+    marginTop: '30px',
+    fontSize: '22px',
+    zIndex: '1000',
+    textAlign: 'center'
+  },
+   homeGraph: {
+    display: 'flex',
+    justifyContent: 'center'
   }
 }
 
@@ -83,57 +95,66 @@ const Industry: React.FC = ({ defaultIndex }: { defaultIndex?: number }) => {
     <>
       <Navigation />
       <main style={industryStyles.main}>
-        <p>industry</p>
         <ChatWindow />
-        <BarChart
-          data={percentageData}
-          layout="vertical"
-          style={{ width: '100%', maxWidth: '700px', maxHeight: '70vh', aspectRatio: 1 }}
-          responsive
-          stackOffset="sign"
-          barCategoryGap={1}
-        >
-          <XAxis
-            type="number"
-            domain={[-10, 10]}
-            tickFormatter={formatPercent}
-            height={50}
-            label={{
-              value: '% of total population',
-              position: 'insideBottom',
-            }}
-          />
-          <YAxis
-            width="auto"
-            type="category"
-            dataKey="age"
-            name="Age group"
-            label={{
-              value: 'Age group',
-              angle: -90,
-              position: 'insideLeft',
-              offset: 10,
-            }}
-          />
-          <Bar
-            stackId="age"
-            name="Female"
-            dataKey="female"
-            fill="#ed7485"
-            radius={[0, 5, 5, 0]}
-            label={{ position: 'right', formatter: formatPercent }}
-          />
-          <Bar
-            stackId="age"
-            name="Male"
-            dataKey="male"
-            fill="#6ea1c7"
-            radius={[0, 5, 5, 0]}
-            label={{ position: 'right', formatter: formatPercent }}
-          />
-          <Tooltip formatter={formatPercent} defaultIndex={defaultIndex} />
-          <Legend itemSorter={itemSorter} verticalAlign="top" align="right" />
-        </BarChart>
+        <div style={industryStyles.industryPageTitle}>
+          Percentage of World Population By Age - Present Day - <br/>Who Will Consume More Than 65% of Their Electricity From Solar Power
+        </div>
+        <div style={industryStyles.homeGraph}>
+          <img
+              src={ConsumerPower}
+              alt="Cartoon outline of the Earth"
+              width='200' height='120'
+              />
+          <BarChart
+            data={percentageData}
+            layout="vertical"
+            style={{ width: '100%', maxWidth: '700px', maxHeight: '70vh', aspectRatio: 1 }}
+            responsive
+            stackOffset="sign"
+            barCategoryGap={1}
+          >
+            <XAxis
+              type="number"
+              domain={[-10, 10]}
+              tickFormatter={formatPercent}
+              height={50}
+              label={{
+                value: '% of total population',
+                position: 'insideBottom',
+              }}
+            />
+            <YAxis
+              width="auto"
+              type="category"
+              dataKey="age"
+              name="Age group"
+              label={{
+                value: 'Age group',
+                angle: -90,
+                position: 'insideLeft',
+                offset: 10,
+              }}
+            />
+            <Bar
+              stackId="age"
+              name="Female"
+              dataKey="female"
+              fill="#ed7485"
+              radius={[0, 5, 5, 0]}
+              label={{ position: 'right', formatter: formatPercent }}
+            />
+            <Bar
+              stackId="age"
+              name="Male"
+              dataKey="male"
+              fill="#6ea1c7"
+              radius={[0, 5, 5, 0]}
+              label={{ position: 'right', formatter: formatPercent }}
+            />
+            <Tooltip formatter={formatPercent} defaultIndex={defaultIndex} />
+            <Legend itemSorter={itemSorter} verticalAlign="top" align="right" />
+          </BarChart>
+        </div>
       </main>
       <Footer />
     </>
