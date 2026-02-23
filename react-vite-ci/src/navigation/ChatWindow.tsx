@@ -6,16 +6,20 @@ const chatStyles = {
 
   },
   buttonWrapper: {
-    position: 'absolute',
+    position: 'fixed',
     right: '40px',
     bottom: '40px',
     background: 'lightblue',
     padding: '15px',
-    borderRadius: '50px'
+    borderRadius: '50px',
+    cursor: 'pointer',
+    zIndex: '100'
+  },
+  popUp: {
+    zIndex: '100',
+    position: 'fixed'
   }
 };
-
-//make styles for progressive web app
 
 const ChatForm: React.FC = () => {
     return (
@@ -35,7 +39,7 @@ const ChatWindow: React.FC = () => {
 
   return (
     <>
-        <p>{showWindow === true ? (<ChatForm />) : ''}</p>
+        <div style={chatStyles.popUp}>{showWindow === true ? (<ChatForm />) : ''}</div>
         <div style={chatStyles.buttonWrapper} onClick={showWindowToggle}>
             <img src={ContactUs} alt="Contact Us Window Pop-up Button Gif of Typewriter Cartoon" width='100' height='60'/>
         </div>

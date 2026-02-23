@@ -1,9 +1,11 @@
+import ProfileImage from '../assets/ProfileImage.svg'
+
 const navigationStyles = {
   header: {
 
   },
-  navBtn: {
-
+  menu: {
+    cursor: 'pointer'
   }
 };
 
@@ -19,14 +21,13 @@ const navigation: navigationType[] = [
 
 const NavigationButton: React.FC<navigationType> = (webpage) => {
   return (
-    <div style={navigationStyles.navBtn} key={webpage.key}>
+    <div style={navigationStyles.menu} key={webpage.key}>
       <a href={`/${webpage.route}`}>{webpage.title}</a>
     </div>
   )
 }
 
 const Navigation: React.FC = () => {
-  // const [count, setCount] = useState(0)
 
   return (
     <>
@@ -34,6 +35,7 @@ const Navigation: React.FC = () => {
         {/* hamburger? */}
         <nav>
           <ul>
+            <img style={navigationStyles.menu} src={ProfileImage} alt="Cartoon outline of male suit shoulders" width='100' height='60'/>
             {navigation.map(webpage => (
               <NavigationButton
                 key={webpage.key}
