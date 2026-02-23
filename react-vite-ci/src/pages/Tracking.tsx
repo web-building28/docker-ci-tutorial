@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, LegendPayload } from 'recharts';
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, LegendPayload, BarShapeProps, Rectangle } from 'recharts';
 import Navigation from '../navigation/Navigation'
 import Footer from '../navigation/Footer'
 import ChatWindow from '../navigation/ChatWindow'
@@ -38,55 +38,87 @@ const trackingStyles = {
     fontSize: '24px',
     width: '38vw',
     zIndex: '1000'
+  },
+    barTitle: {
+    margin: '3em',
+    textAlign: 'center',
+    alignItems: 'center',
+    fontSize: '28px'
+  },
+  homeGraph: {
+    display: 'flex',
+    justifyContent: 'center'
   }
 }
 
-const data = [
-  {
-    name: 'Page A',
-    uv: 4000,
-    pv: 2400,
-    amt: 2400,
-  },
-  {
-    name: 'Page B',
-    uv: 3000,
-    pv: 1398,
-    amt: 2210,
-  },
-  {
-    name: 'Page C',
-    uv: 2000,
-    pv: 9800,
-    amt: 2290,
-  },
-  {
-    name: 'Page D',
-    uv: 2780,
-    pv: 3908,
-    amt: 2000,
-  },
-  {
-    name: 'Page E',
-    uv: 1890,
-    pv: 4800,
-    amt: 2181,
-  },
-  {
-    name: 'Page F',
-    uv: 2390,
-    pv: 3800,
-    amt: 2500,
-  },
-  {
-    name: 'Page G',
-    uv: 3490,
-    pv: 4300,
-    amt: 2100,
-  },
-];
+type TimelineDataType = {
+  name: string;
+  type: string;
+  outcome: 'success' | 'error' | 'pending';
+  Development: [number, number];
+  Production: [number, number];
+}
 
-const Tracking: React.FC = () => {
+const data: Array<TimelineDataType> = [
+  {
+    name: 'Japan',
+    type: 'TR',
+    outcome: 'success',
+    Development: [1980, 2019],
+    Production: [1954, 2026],
+  },
+  {
+    name: 'United Stated of America',
+    type: 'MT',
+    outcome: 'error',
+    Development: [1954, 1991],
+    Production: [2019, 2024],
+  },
+  {
+    name: 'Australia',
+    type: 'MT',
+    outcome: 'success',
+    Development: [1954, 1983],
+    Production: [1991, 2025],
+  },
+  {
+    name: 'China',
+    type: 'MT',
+    outcome: 'error',
+    Development: [1912, 2019],
+    Production: [1976, 2026],
+  },
+  {
+    name: 'India',
+    type: 'MT',
+    outcome: 'success',
+    Development: [1918, 2000],
+    Production: [1976, 2026],
+  }
+]
+
+const getBarColor = (outcome: TimelineDataType['outcome']) => {
+  switch (outcome) {
+    case 'success':
+      return 'blue';
+    case 'error':
+      return 'red';
+    default:
+      return 'grey';
+  }
+}
+
+const CustomFillRectangle = (props: BarShapeProps) => {
+  // @ts-expect-error props.outcome is injected from the data array which Recharts doesn't know about
+  const { outcome } = props;
+  return <Rectangle {...props} fill={getBarColor(outcome)} />;
+}
+
+const ActiveRectangle = (props: BarShapeProps) => {
+  return <CustomFillRectangle {...props} stroke="orange" strokeWidth={3} />;
+}
+
+const Tracking: React.FC = ({ defaultIndex }: { defaultIndex?: number }) => {
 
   const getMassData = async () => {
     fetch('https://jsonplaceholder.typicode.com/photos')
@@ -95,35 +127,6 @@ const Tracking: React.FC = () => {
   }
 
   getMassData()
-
-    const [focusedDataKey, setFocusedDataKey] = useState<string | null>(null);
-    const [locked, setLocked] = useState<boolean>(false);
-
-    const onLegendMouseEnter = (payload: LegendPayload) => {
-      if (!locked) {
-        setFocusedDataKey(String(payload.dataKey));
-      }
-    };
-
-    const onLegendMouseOut = () => {
-      if (!locked) {
-        setFocusedDataKey(null);
-      }
-      };
-
-    const onLegendClick = (payload: LegendPayload) => {
-      if (focusedDataKey === String(payload.dataKey)) {
-        if (locked) {
-          setFocusedDataKey(null);
-          setLocked(false);
-        } else {
-          setLocked(true);
-        }
-      } else {
-        setFocusedDataKey(String(payload.dataKey));
-        setLocked(true);
-      }
-      };
 
   return (
     <>
@@ -140,29 +143,55 @@ const Tracking: React.FC = () => {
           <div style={trackingStyles.title}>Chronology of Solar Panels</div>
         </div>
         <div style={trackingStyles.trackingSummary}>
-          Little history of solar panels.
+          In 1964 NASA, building upon previous inventions dating back to earlier than 1873,
+          launched a satellite self-sufficient from solar power. In 1983 Prof. Martin Green of UNSW
+          invented technology that is present in more than 90% of solar panels.
+          <br/><br/>
+          In the 2000's
+          Japan's mainstream electronics corporations such as Mitsubishi and their
+          peers manufactured a large portion of the solar panels used in residential early adapter
+          regions such as Los Angeles. This marketshare tapered off around 2019, when
+          manufacturing moved mostly to the USA and China. Now, the top 5 countries
+          using residential solar power are United States of America, Japan, China, Australia and India.
+          The U.S.A. produced more than 50% of their electricity in their
+          grid from solar panels in 2023.
         </div>
         <ChatWindow />
-        <BarChart
-          style={{ width: '100%', maxWidth: '700px', maxHeight: '70vh', aspectRatio: 1.618 }}
-          responsive
-          data={data}
-          margin={{
-            top: 20,
-            right: 0,
-            left: 0,
-            bottom: 5,
-          }}
-        >
-          <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="name" />
-          <YAxis width="auto" />
-          <Tooltip />
-              <Legend onMouseEnter={onLegendMouseEnter} onMouseOut={onLegendMouseOut} onClick={onLegendClick} />
-          <Bar dataKey="pv" stackId="a" fill={focusedDataKey == null || focusedDataKey === 'pv' ? '#8884d8' : '#eee'} />
-          <Bar dataKey="amt" stackId="a" fill={focusedDataKey == null || focusedDataKey === 'amt' ? '#82ca9d' : '#eee'} />
-          <Bar dataKey="uv" fill={focusedDataKey == null || focusedDataKey === 'uv' ? '#ffc658' : '#eee'} />
-        </BarChart>
+        <div style={trackingStyles.barTitle}>
+          Residental Solar Panel Periods of Continued Growth
+        </div>
+        <div style={trackingStyles.homeGraph}>
+          <BarChart
+            layout="vertical"
+            style={{ width: '100%', maxWidth: '700px', maxHeight: '70vh', aspectRatio: 1.618 }}
+            responsive
+            data={data}
+            margin={{ bottom: 20 }}
+          >
+            <CartesianGrid strokeDasharray="2 2" />
+            <Tooltip shared={false} defaultIndex={defaultIndex} />
+            <XAxis 
+              type="number"
+              domain={[1850, 2050]}
+              dataKey="development"
+              height={50} 
+              label={{ value: 'Fictional data', position: 'insideBottomRight' }}
+              />
+            <YAxis
+              type="category" 
+              dataKey="name" 
+              width="auto"
+              label={{
+                value: 'Fictional data',
+                angle: -90,
+                position: 'insideTopLeft',
+                textAnchor: 'end',
+              }}
+            />
+            <Bar dataKey="Development" stackId="a" radius={25} shape={CustomFillRectangle} activeBar={ActiveRectangle} />
+            <Bar dataKey="Production" stackId="a" radius={25} shape={CustomFillRectangle} activeBar={ActiveRectangle} />
+          </BarChart>
+        </div>
       </main>
       <Footer />
     </>
