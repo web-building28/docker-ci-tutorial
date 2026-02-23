@@ -1,11 +1,58 @@
 import ProfileImage from '../assets/ProfileImage.svg'
+import HeaderBackground from '../assets/HeaderBackground.png'
 
 const navigationStyles = {
   header: {
-
+    backgroundImage: `url(${HeaderBackground})`,
+    backgroundRepeat: 'no-repeat',
+    backgroundSize: 'cover',
+    marginLeft: '1em',
+    marginRight: '1em',
+    height: 'auto',
+    overflow: 'scroll'
   },
-  menu: {
+  titles: {
+    backgroundColor: 'white',
+    margin: '1em'
+  },
+  websiteTitle: {
+    fontColor: 'black',
+    fontSize: '50px',
+  },
+  company: {
+    fontColor: 'black',
+    fontSize: '32px',
+  },
+  projectCompany: {
+    fontColor: 'black',
+    fontSize: '32px',
+  },
+  websiteOwner: {
+    fontColor: 'black',
+    fontSize: '32px',
+  },
+  container: {
+    textAlign: 'center',
+    display: 'flex',
+    height: '10em',
+    width: '100vw'
+  },
+  containerItem: {
+    marginTop: '3em',
+    marginLeft: '2em',
+    flexGrow: '1',
+    cursor: 'pointer',
+    backgroundColor: 'white',
+    borderRadius: '0.5em'
+  },
+  containerItemAndAlignment: {
+    margin: '3em',
+    flexGrow: '1',
     cursor: 'pointer'
+  },
+  menuItem: {
+    color: 'white',
+    fontSize: '20px'
   }
 };
 
@@ -21,8 +68,8 @@ const navigation: navigationType[] = [
 
 const NavigationButton: React.FC<navigationType> = (webpage) => {
   return (
-    <div style={navigationStyles.menu} key={webpage.key}>
-      <a href={`/${webpage.route}`}>{webpage.title}</a>
+    <div key={webpage.key}>
+      <a style={navigationStyles.menuItem} href={`/${webpage.route}`}>{webpage.title}</a>
     </div>
   )
 }
@@ -31,20 +78,31 @@ const Navigation: React.FC = () => {
 
   return (
     <>
-      <header style={navigationStyles.header}>
-        {/* hamburger? */}
-        <nav>
-          <ul>
-            <img style={navigationStyles.menu} src={ProfileImage} alt="Cartoon outline of male suit shoulders" width='100' height='60'/>
-            {navigation.map(webpage => (
-              <NavigationButton
-                key={webpage.key}
-                route={webpage.route}
-                title={webpage.title}
-                />
-            ))}
-          </ul>
-        </nav>
+      <header>
+        <section style={navigationStyles.titles}>
+          <div style={navigationStyles.websiteTitle}>Solar Panel Industry Statistical Analysis</div>
+          <div style={navigationStyles.company}>Department of Economics</div>
+          <div style={navigationStyles.projectCompany}>Reported by Project Data Enterprises</div>
+          <div style={navigationStyles.websiteOwner}>Director: George Payne</div>
+        </section>
+        <div style={navigationStyles.header}>
+          <nav>
+              <div style={navigationStyles.container}>
+                <a href={'/'}>
+                  <img style={navigationStyles.containerItem} src={ProfileImage} alt="Cartoon outline of male suit shoulders" width='100' height='60'/>
+                </a>
+                {navigation.map(webpage => (
+                  <div style={navigationStyles.containerItemAndAlignment}>
+                    <NavigationButton
+                      key={webpage.key}
+                      route={webpage.route}
+                      title={webpage.title}
+                      />
+                  </div>
+                ))}
+              </div>
+          </nav>
+        </div>
       </header>
     </>
   )

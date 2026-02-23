@@ -1,11 +1,25 @@
 import { Pie, PieChart, Line, LineChart, ScatterChart, Scatter, XAxis, YAxis, CartesianGrid, Tooltip, LabelList, ZAxis, TooltipIndex, Radar, RadarChart, PolarGrid, Legend, PolarAngleAxis, PolarRadiusAxis, ResponsiveContainer, ComposedChart, Area, Bar } from 'recharts'
 import Navigation from '../navigation/Navigation'
+import Footer from '../navigation/Footer'
 import ChatWindow from '../navigation/ChatWindow'
 import ProjectTagIcon from '../assets/ProjectTagIcon.svg'
 
 const projectStyles = {
   main: {
     
+  },
+  projectsTitle: {
+    marginLeft: '2em',
+    marginTop: '2em',
+    fontSize: '64px',
+    zIndex: '1000'
+  },
+  projectsSummary: {
+    marginLeft: '5em',
+    marginTop: '2em',
+    fontSize: '24px',
+    width: '38vw',
+    zIndex: '1000'
   },
   projects: {
     display: 'flex',
@@ -119,6 +133,7 @@ const data01 = [
   { name: 'Group C', value: 300 },
   { name: 'Group D', value: 200 },
 ];
+
 const data02 = [
   { name: 'A1', value: 100 },
   { name: 'A2', value: 300 },
@@ -240,7 +255,17 @@ const Project: React.FC = ({
     <>
       <Navigation />
       <main style={projectStyles.main}>
-        <p>heading intro</p>
+        <div style={projectStyles.projectsTitle}>Solar Industry Projects - Highlighted Insights</div>
+        <div style={projectStyles.projectsSummary}>
+          Key projects in the solar industry are aimed at improving 
+          efficiency and speed to market. There are also statistical
+          analysis studies to reference for key decision making.
+          Various industry contract leaders are in the projection
+          phase of investigating the most effective organization
+          options for managerial groups before then applying and 
+          seeking more effective statistics through fast,
+          plotted webs of human capital.
+        </div>
         <ChatWindow />
         <div style={projectStyles.projects}>
           <div style={projectStyles.projectCardWrapper}>
@@ -436,6 +461,7 @@ const Project: React.FC = ({
           </div>
         </div>
       </main>
+      <Footer />
     </>
   )
 }

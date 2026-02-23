@@ -1,5 +1,6 @@
 import { ScatterChart, Scatter, XAxis, YAxis, CartesianGrid, Tooltip } from 'recharts'
 import Navigation from '../navigation/Navigation'
+import Footer from '../navigation/Footer'
 import ChatWindow from '../navigation/ChatWindow'
 
 const sourcesStyles = {
@@ -76,6 +77,7 @@ const Sources: React.FC = () => {
               <Scatter yAxisId="right" name="A school" data={data02} fill="#82ca9d" />
             </ScatterChart>
       </main>
+      <Footer />
     </>
   )
 }

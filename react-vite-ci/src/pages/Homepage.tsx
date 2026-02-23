@@ -1,11 +1,61 @@
 import { useState } from 'react'
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, LegendPayload } from 'recharts'
 import Navigation from '../navigation/Navigation'
+import Footer from '../navigation/Footer'
 import ChatWindow from '../navigation/ChatWindow'
+import SolarImage from '../assets/SolarImage.png'
+import Worldwide from '../assets/Worldwide.svg'
 
 const homePageStyles = {
   main: {
 
+  },
+  homepageTitle: {
+    marginLeft: '2em',
+    marginTop: '30px',
+    fontSize: '64px',
+    zIndex: '1000',
+    textAlign: 'center'
+  },
+  introGrid: {
+    margin: '20px',
+    display: 'grid',
+    gridTemplateColumns: '50% 50%',
+    gridTemplateRows: '70%',
+    gap: '3em',
+    textAlign: 'center',
+    height: '650px',
+    width: '100vw'
+  },
+  gridItem1: {
+    gridColumnStart: '1',
+    gridColumnEnd: '1',
+    gridRowStart: '1',
+    gridRowEnd: '1',
+    marginTop: '2em',
+    fontSize: '18px',
+    width: '38vw',
+    textAlign: 'left'
+  },
+    gridItem2: {
+    gridColumnStart: '2',
+    gridColumnEnd: '2',
+    gridRowStart: '1',
+    gridRowEnd: '1',
+    backgroundImage: `url(${SolarImage})`,
+    backgroundRepeat: 'no-repeat',
+    backgroundSize: 'contain',
+    float: 'right'
+  },
+  barTitle: {
+    marginTop: '3em',
+    textAlign: 'center',
+    alignItems: 'center',
+    fontSize: '28px'
+  },
+  homeGraph: {
+    display: 'flex',
+    justifyContent: 'center'
   }
 }
 
@@ -89,9 +139,38 @@ const Homepage: React.FC = () => {
     <>
       <Navigation />
       <main style={homePageStyles.main}>
-        {/* css grid that can scroll sticky nav bar and map different chart type children array */}
-          <ChatWindow />
-           <BarChart
+        <div style={homePageStyles.homepageTitle}>Solar Power - Industrial Insights</div>
+        <ChatWindow />
+        <div style={homePageStyles.introGrid}>
+          <div style={homePageStyles.gridItem1}>
+            The energy supply of society has evolved into a combination of
+            what was most easily obtainable with also what sources were
+            possible under sprawling political control.
+            <br />
+            <br />
+            While there is an economy behind the energy industry, for instance the
+            New York Mercantile Exchange, it balances itself between economic power
+            and essential services. Depending on what location and current events
+            throughout the world, you may be more towards either end of that spectrum.
+            <br />
+            <br />
+            Energy in the economy is more similar to energy in nature than most believe it is.
+            Often, when we hear oil, hydro-power, wind power, nuclear power, and solar power called "energy" we get the feeling of a superficial definition that lacks details in commerce and lacks effort in explaining what is energy. However, the energy sector, albeit less human, is equally dynamic and elusive in regards to the changes in time, source, type, and multitude as the substance of energy in relation to energy versus matter, and also energy as emotions or feelings.
+            <br />
+            <br />
+            <img
+              src={Worldwide}
+              alt="Cartoon outline of the Earth"
+              width='100' height='60'
+              />
+          </div>
+          <div style={homePageStyles.gridItem2} />
+        </div>
+        <div style={homePageStyles.barTitle}>
+          Ratio of Energy Sector Per Source - Global
+        </div>
+        <div style={homePageStyles.homeGraph}>
+          <BarChart
               style={{ width: '100%', maxWidth: '700px', maxHeight: '70vh', aspectRatio: 1.618 }}
               responsive
               data={data}
@@ -102,16 +181,18 @@ const Homepage: React.FC = () => {
                 bottom: 5,
               }}
             >
-              <CartesianGrid strokeDasharray="3 3" />
-              <XAxis dataKey="name" />
-              <YAxis width="auto" />
-              <Tooltip />
-              <Legend onMouseEnter={onLegendMouseEnter} onMouseOut={onLegendMouseOut} onClick={onLegendClick} />
-              <Bar dataKey="pv" stackId="a" fill={focusedDataKey == null || focusedDataKey === 'pv' ? '#8884d8' : '#eee'} />
-              <Bar dataKey="amt" stackId="a" fill={focusedDataKey == null || focusedDataKey === 'amt' ? '#82ca9d' : '#eee'} />
-              <Bar dataKey="uv" fill={focusedDataKey == null || focusedDataKey === 'uv' ? '#ffc658' : '#eee'} />
-            </BarChart>
+            <CartesianGrid strokeDasharray="3 3" />
+            <XAxis dataKey="name" />
+            <YAxis width="auto" />
+            <Tooltip />
+            <Legend onMouseEnter={onLegendMouseEnter} onMouseOut={onLegendMouseOut} onClick={onLegendClick} />
+            <Bar dataKey="pv" stackId="a" fill={focusedDataKey == null || focusedDataKey === 'pv' ? '#8884d8' : '#eee'} />
+            <Bar dataKey="amt" stackId="a" fill={focusedDataKey == null || focusedDataKey === 'amt' ? '#82ca9d' : '#eee'} />
+            <Bar dataKey="uv" fill={focusedDataKey == null || focusedDataKey === 'uv' ? '#ffc658' : '#eee'} />
+          </BarChart>
+        </div>
       </main>
+      <Footer />
     </>
   )
 }

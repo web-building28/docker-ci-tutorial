@@ -1,11 +1,43 @@
 import { useState } from 'react';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, LegendPayload } from 'recharts';
 import Navigation from '../navigation/Navigation'
+import Footer from '../navigation/Footer'
 import ChatWindow from '../navigation/ChatWindow'
+import Trajectory from '../assets/Trajectory.svg'
 
 const trackingStyles = {
   main: {
     
+  },
+  titleGrid: {
+    height: '50px',
+    width: '40vw',
+    margin: '15px',
+    display: 'grid',
+    gridTemplateColumns: '20% 80%',
+    gridTemplateRows: '100%',
+    gap: '5px'
+  },
+  titleIcon: {
+    gridColumnStart: '1',
+    gridColumnEnd: '1',
+    gridRowStart: '1',
+    gridRowEnd: '2'
+  },
+  title: {
+    paddingTop: '10px',
+    gridColumnStart: '2',
+    gridColumnEnd: '2',
+    gridRowStart: '1',
+    gridRowEnd: '2',
+    fontSize: '26px'
+  },
+   trackingSummary: {
+    marginLeft: '5em',
+    marginTop: '2em',
+    fontSize: '24px',
+    width: '38vw',
+    zIndex: '1000'
   }
 }
 
@@ -97,7 +129,19 @@ const Tracking: React.FC = () => {
     <>
       <Navigation />
       <main style={trackingStyles.main}>
-        <p>tracking</p>
+        <div style={trackingStyles.titleGrid}>
+          <div style={trackingStyles.titleIcon}>
+            <img
+              src={Trajectory}
+              alt="Cartoon outline of schedule calendar"
+              width='100' height='60'
+              />
+          </div>
+          <div style={trackingStyles.title}>Chronology of Solar Panels</div>
+        </div>
+        <div style={trackingStyles.trackingSummary}>
+          Little history of solar panels.
+        </div>
         <ChatWindow />
         <BarChart
           style={{ width: '100%', maxWidth: '700px', maxHeight: '70vh', aspectRatio: 1.618 }}
@@ -120,6 +164,7 @@ const Tracking: React.FC = () => {
           <Bar dataKey="uv" fill={focusedDataKey == null || focusedDataKey === 'uv' ? '#ffc658' : '#eee'} />
         </BarChart>
       </main>
+      <Footer />
     </>
   )
 }

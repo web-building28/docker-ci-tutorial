@@ -10,6 +10,7 @@ import {
   TooltipValueType,
 } from 'recharts';
 import Navigation from '../navigation/Navigation'
+import Footer from '../navigation/Footer'
 import ChatWindow from '../navigation/ChatWindow'
 
 const industryStyles = {
@@ -134,6 +135,7 @@ const Industry: React.FC = ({ defaultIndex }: { defaultIndex?: number }) => {
           <Legend itemSorter={itemSorter} verticalAlign="top" align="right" />
         </BarChart>
       </main>
+      <Footer />
     </>
   )
 }

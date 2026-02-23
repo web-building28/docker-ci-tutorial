@@ -1,5 +1,6 @@
 import { CartesianGrid, Legend, Line, LineChart, Tooltip, XAxis, YAxis } from 'recharts';
 import Navigation from '../navigation/Navigation'
+import Footer from '../navigation/Footer'
 import ChatWindow from '../navigation/ChatWindow'
 
 const regionsStyles = {
@@ -90,6 +91,7 @@ const Regions: React.FC = () => {
             <Line yAxisId="right" type="monotone" dataKey="uv" stroke="#82ca9d" />
           </LineChart>
       </main>
+      <Footer />
     </>
   )
 }

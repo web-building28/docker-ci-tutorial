@@ -2,29 +2,44 @@ import { useState } from 'react'
 import ContactUs from '../assets/ContactUs.gif'
 
 const chatStyles = {
-  header: {
-
-  },
   buttonWrapper: {
     position: 'fixed',
     right: '40px',
     bottom: '40px',
-    background: 'lightblue',
-    padding: '15px',
-    borderRadius: '50px',
+    background: 'white',
+    border: '2px solid black',
     cursor: 'pointer',
     zIndex: '100'
   },
   popUp: {
-    zIndex: '100',
-    position: 'fixed'
+    zIndex: '999',
+    position: 'fixed',
+    right: '40px',
+    bottom: '200px'
+  },
+  popupWindow: {
+    textAlign: 'center',
+    border: '2px solid grey',
+    backgroundColor: 'white',
+    borderRadius: '2em',
+    padding: '3em 1em 1em 1em',
+    boxShadow: '12px 21px',
+    height: '200px',
+    width: '265px'
+  },
+  chatSendEmail: {
+    border: '3px solid blue',
+    backgroundColor: 'lightBlue',
+    borderRadius: '1em',
+    width: '100%'
   }
 };
 
 const ChatForm: React.FC = () => {
     return (
-        <div>
-            <h2>Chat window coming soon!</h2>
+        <div style={chatStyles.popupWindow}>
+            <h2>Get in touch!</h2>
+            <button style={chatStyles.chatSendEmail} onClick={(e) => {window.location.href ='mailto:individual_csx@outlook.com'}}>Send an email</button>
         </div>
     )
 }
@@ -34,6 +49,7 @@ const ChatWindow: React.FC = () => {
   const [showWindow, setShowWindow] = useState(false)
 
   const showWindowToggle = () => {
+    console.log('show: ', showWindow)
     return setShowWindow(showWindow => !showWindow)
   }
 
