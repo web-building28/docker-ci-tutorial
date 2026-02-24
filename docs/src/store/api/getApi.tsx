@@ -21,7 +21,7 @@ export const dummyApi = createApi({
   reducerPath: 'dummyDataApi',
   baseQuery: fetchBaseQuery({ baseUrl: 'https://jsonplaceholder.typicode.com/' }),
   endpoints: (builder) => ({
-    getDummyList: builder.query<DummyGetUsers, string>({
+    getDummyList: builder.query<any, string>({
       query: (list) => `${list}`,
     }),
   }),
