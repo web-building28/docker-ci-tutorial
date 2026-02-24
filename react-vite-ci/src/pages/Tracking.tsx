@@ -120,14 +120,6 @@ const ActiveRectangle = (props: BarShapeProps) => {
 
 const Tracking: React.FC = ({ defaultIndex }: { defaultIndex?: number }) => {
 
-  const getMassData = async () => {
-    fetch('https://jsonplaceholder.typicode.com/photos')
-      .then(response => response.json())
-      .then(json => console.log(json))
-  }
-
-  getMassData()
-
   return (
     <>
       <Navigation />

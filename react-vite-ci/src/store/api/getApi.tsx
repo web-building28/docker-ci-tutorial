@@ -1,20 +1,20 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 
 export interface DummyGetUsers {
-    id: string;
-    name: string;
-    username: string,
-    email: string,
-    address: {
-        street: string,
-        suite: string,
-        city: string,
-        zipcode: string,
-        geo: {
-        lat: string,
-        lng: string
-        }
-    }
+  id: string;
+  name: string;
+  username: string,
+  email: string,
+  address: {
+      street: string,
+      suite: string,
+      city: string,
+      zipcode: string,
+      geo: {
+      lat: string,
+      lng: string
+      }
+  }
 }[]
 
 export const dummyApi = createApi({

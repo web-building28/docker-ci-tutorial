@@ -49,7 +49,6 @@ const ChatWindow: React.FC = () => {
   const [showWindow, setShowWindow] = useState(false)
 
   const showWindowToggle = () => {
-    console.log('show: ', showWindow)
     return setShowWindow(showWindow => !showWindow)
   }
 

@@ -4,7 +4,6 @@ const footerStyles = {
         textAlign: 'left',
         color: 'white',
         width: '100vw',
-        height: '50px',
         bottom: '0px'
     },
     text: {
@@ -15,7 +14,10 @@ const footerStyles = {
 const Footer: React.FC = () => {
     return (
         <div style={footerStyles.container}>
-            <p style={footerStyles.text}>Copyright 2026 - George Payne - All content is fictional.</p>
+            <p style={footerStyles.text}>Copyright 2026 - George Payne - All content is fictional.</p><br/>
+            <p style={footerStyles.text}>Some facts about solar energy are based on research. Feel free to do your own fact checking.</p><br/>
+            <p style={footerStyles.text}>Built with React, Vite, Redux Toolkit, TypeScript, dummy data from RTK API calls, and Rechart.js</p><br />   
+            <p style={footerStyles.text}>Using Docker, GitHub Actions, and Elastic Beanstalk for the Continuous Integration website hosting.</p>       
         </div>
     )
 }

@@ -60,14 +60,6 @@ const data = [
 
 const Regions: React.FC = () => {
 
-    const getRegions = async () => {
-    fetch('https://jsonplaceholder.typicode.com/users')
-      .then(response => response.json())
-      .then(json => console.log(json))
-  }
-
-  getRegions()
-
   return (
     <>
       <Navigation />

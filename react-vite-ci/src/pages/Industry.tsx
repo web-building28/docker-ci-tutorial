@@ -66,7 +66,7 @@ const totalPopulation: number = rawData.reduce((sum, entry) => sum + entry.male 
 const percentageData = rawData.map(entry => {
   return {
     age: entry.age,
-    male: (entry.male / totalPopulation) * -100, // Negative for left side
+    male: (entry.male / totalPopulation) * -100,
     female: (entry.female / totalPopulation) * 100,
   };
 });
@@ -76,20 +76,11 @@ function formatPercent(val: RenderableText | TooltipValueType): string {
 }
 
 function itemSorter(item: LegendPayload): number {
-  // Make legend order match the chart bar order
   return item.value === 'Male' ? 0 : 1;
 }
 
 
 const Industry: React.FC = ({ defaultIndex }: { defaultIndex?: number }) => {
-
-    const getEvent = async () => {
-    fetch('https://jsonplaceholder.typicode.com/todos/1')
-      .then(response => response.json())
-      .then(json => console.log(json))
-  }
-
-  getEvent()
 
   return (
     <>

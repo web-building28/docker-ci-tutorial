@@ -2,19 +2,17 @@ import { createSlice } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
 import type { RootState } from './store'
 
-// Define a type for the slice state
+// Slice example not being used yet
 interface UsersState {
-  value: number
+  value: number,
 }
 
-// Define the initial state using that type
 const initialState: UsersState = {
   value: 0,
 }
 
 export const usersSlice = createSlice({
   name: 'users',
-  // `createSlice` will infer the state type from the `initialState` argument
   initialState,
   reducers: {
     increment: (state) => {
@@ -27,12 +25,10 @@ export const usersSlice = createSlice({
     incrementByAmount: (state, action: PayloadAction<number>) => {
       state.value += action.payload
     },
-  },
+  }
 })
 
 export const { increment, decrement, incrementByAmount } = usersSlice.actions
-
-// Other code such as selectors can use the imported `RootState` type
 export const selectUsers = (state: RootState) => state.users.value
 
 export default usersSlice.reducer
