@@ -1,4 +1,3 @@
-import * as React from 'react'
 import { Provider } from 'react-redux'
 import ReactDOM from "react-dom/client"
 import { store } from './store/store.ts'
@@ -26,4 +25,4 @@ ReactDOM.createRoot(root!).render(
   </Provider>
 )
 
-const container = document.getElementById('root')
+// const container = document.getElementById('root')

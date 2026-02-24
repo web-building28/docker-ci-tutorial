@@ -2,12 +2,12 @@ import {
   Bar,
   BarChart,
   Legend,
-  LegendPayload,
+  /*LegendPayload,*/
   Tooltip,
   XAxis,
-  YAxis,
-  RenderableText,
-  TooltipValueType,
+  YAxis
+  /*RenderableText,
+  TooltipValueType,*/
 } from 'recharts';
 import Navigation from '../navigation/Navigation'
 import Footer from '../navigation/Footer'
@@ -23,7 +23,7 @@ const industryStyles = {
     marginTop: '30px',
     fontSize: '22px',
     zIndex: '1000',
-    textAlign: 'center'
+    textAlign: 'center' as const
   },
    homeGraph: {
     display: 'flex',
@@ -71,11 +71,11 @@ const percentageData = rawData.map(entry => {
   };
 });
 
-function formatPercent(val: RenderableText | TooltipValueType): string {
+function formatPercent(val: any /*RenderableText | TooltipValueType*/): string {
   return `${Math.abs(Number(val)).toFixed(1)}%`;
 }
 
-function itemSorter(item: LegendPayload): number {
+function itemSorter(item: any /*LegendPayload*/): number {
   return item.value === 'Male' ? 0 : 1;
 }
 
@@ -111,7 +111,7 @@ const Industry: React.FC = ({ defaultIndex }: { defaultIndex?: number }) => {
               height={50}
               label={{
                 value: '% of total population',
-                position: 'insideBottom',
+                position: 'insideBottom' as const,
               }}
             />
             <YAxis
@@ -122,7 +122,7 @@ const Industry: React.FC = ({ defaultIndex }: { defaultIndex?: number }) => {
               label={{
                 value: 'Age group',
                 angle: -90,
-                position: 'insideLeft',
+                position: 'insideLeft' as const,
                 offset: 10,
               }}
             />
@@ -132,7 +132,7 @@ const Industry: React.FC = ({ defaultIndex }: { defaultIndex?: number }) => {
               dataKey="female"
               fill="#ed7485"
               radius={[0, 5, 5, 0]}
-              label={{ position: 'right', formatter: formatPercent }}
+              label={{ position: 'right' as const, formatter: formatPercent }}
             />
             <Bar
               stackId="age"
@@ -140,7 +140,7 @@ const Industry: React.FC = ({ defaultIndex }: { defaultIndex?: number }) => {
               dataKey="male"
               fill="#6ea1c7"
               radius={[0, 5, 5, 0]}
-              label={{ position: 'right', formatter: formatPercent }}
+              label={{ position: 'right' as const, formatter: formatPercent }}
             />
             <Tooltip formatter={formatPercent} defaultIndex={defaultIndex} />
             <Legend itemSorter={itemSorter} verticalAlign="top" align="right" />

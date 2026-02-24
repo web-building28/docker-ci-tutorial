@@ -1,5 +1,4 @@
-import { useState } from 'react';
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, LegendPayload, BarShapeProps, Rectangle } from 'recharts';
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, /*Legend, LegendPayload, BarShapeProps,*/ Rectangle } from 'recharts';
 import Navigation from '../navigation/Navigation'
 import Footer from '../navigation/Footer'
 import ChatWindow from '../navigation/ChatWindow'
@@ -41,7 +40,7 @@ const trackingStyles = {
   },
     barTitle: {
     margin: '3em',
-    textAlign: 'center',
+    textAlign: 'center' as const,
     alignItems: 'center',
     fontSize: '28px'
   },
@@ -108,13 +107,12 @@ const getBarColor = (outcome: TimelineDataType['outcome']) => {
   }
 }
 
-const CustomFillRectangle = (props: BarShapeProps) => {
-  // @ts-expect-error props.outcome is injected from the data array which Recharts doesn't know about
+const CustomFillRectangle = (props: any /*BarShapeProps*/) => {
   const { outcome } = props;
   return <Rectangle {...props} fill={getBarColor(outcome)} />;
 }
 
-const ActiveRectangle = (props: BarShapeProps) => {
+const ActiveRectangle = (props: any /*BarShapeProps*/) => {
   return <CustomFillRectangle {...props} stroke="orange" strokeWidth={3} />;
 }
 
@@ -167,7 +165,7 @@ const Tracking: React.FC = ({ defaultIndex }: { defaultIndex?: number }) => {
               domain={[1850, 2050]}
               dataKey="development"
               height={50} 
-              label={{ value: 'Fictional data', position: 'insideBottomRight' }}
+              label={{ value: 'Fictional data', position: 'insideBottomRight' as const}}
               />
             <YAxis
               type="category" 
@@ -176,7 +174,7 @@ const Tracking: React.FC = ({ defaultIndex }: { defaultIndex?: number }) => {
               label={{
                 value: 'Fictional data',
                 angle: -90,
-                position: 'insideTopLeft',
+                position: 'insideTopLeft' as const,
                 textAnchor: 'end',
               }}
             />

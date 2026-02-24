@@ -9,7 +9,7 @@ const regionsStyles = {
   },
   barTitle: {
     marginTop: '15px',
-    textAlign: 'center',
+    textAlign: 'center' as const,
     alignItems: 'center',
     fontSize: '28px'
   },

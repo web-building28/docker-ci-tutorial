@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, LegendPayload } from 'recharts'
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend/*, LegendPayload*/ } from 'recharts'
 import Navigation from '../navigation/Navigation'
 import Footer from '../navigation/Footer'
 import ChatWindow from '../navigation/ChatWindow'
@@ -16,7 +16,7 @@ const homePageStyles = {
     marginTop: '30px',
     fontSize: '64px',
     zIndex: '1000',
-    textAlign: 'center'
+    textAlign: 'center' as const
   },
   introGrid: {
     margin: '20px',
@@ -24,7 +24,7 @@ const homePageStyles = {
     gridTemplateColumns: '50% 50%',
     gridTemplateRows: '70%',
     gap: '3em',
-    textAlign: 'center',
+    textAlign: 'center' as const,
     height: '650px',
     width: '100vw'
   },
@@ -36,7 +36,7 @@ const homePageStyles = {
     marginTop: '2em',
     fontSize: '18px',
     width: '38vw',
-    textAlign: 'left'
+    textAlign: 'left' as const
   },
     gridItem2: {
     gridColumnStart: '2',
@@ -46,11 +46,11 @@ const homePageStyles = {
     backgroundImage: `url(${SolarImage})`,
     backgroundRepeat: 'no-repeat',
     backgroundSize: 'contain',
-    float: 'right'
+    float: 'right' as const
   },
   barTitle: {
     marginTop: '3em',
-    textAlign: 'center',
+    textAlign: 'center' as const,
     alignItems: 'center',
     fontSize: '28px'
   },
@@ -68,9 +68,9 @@ const Homepage: React.FC = () => {
   const [focusedDataKey, setFocusedDataKey] = useState<string | null>(null);
   const [locked, setLocked] = useState<boolean>(false);
   
-  const { data, error, isLoading } = useGetDummyListQuery('users')
+  const { data/*, error, isLoading*/ } = useGetDummyListQuery('users')
 
-  const onLegendMouseEnter = (payload: LegendPayload) => {
+  const onLegendMouseEnter = (payload: any /*LegendPayload*/) => {
     if (!locked) {
       setFocusedDataKey(String(payload.dataKey))
     }
@@ -82,7 +82,7 @@ const Homepage: React.FC = () => {
     }
   }
 
-  const onLegendClick = (payload: LegendPayload) => {
+  const onLegendClick = (payload: any /*LegendPayload*/) => {
     if (focusedDataKey === String(payload.dataKey)) {
       if (locked) {
         setFocusedDataKey(null)

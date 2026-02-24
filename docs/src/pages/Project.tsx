@@ -1,4 +1,4 @@
-import { Pie, PieChart, Line, LineChart, ScatterChart, Scatter, XAxis, YAxis, CartesianGrid, Tooltip, LabelList, ZAxis, TooltipIndex, Radar, RadarChart, PolarGrid, Legend, PolarAngleAxis, PolarRadiusAxis, ResponsiveContainer, ComposedChart, Area, Bar } from 'recharts'
+import { Pie, PieChart, Line, LineChart, ScatterChart, Scatter, XAxis, YAxis, CartesianGrid, Tooltip, LabelList, ZAxis, /*TooltipIndex,*/ Radar, RadarChart, PolarGrid, Legend, PolarAngleAxis, PolarRadiusAxis, ResponsiveContainer, ComposedChart, Area, Bar } from 'recharts'
 import Navigation from '../navigation/Navigation'
 import Footer from '../navigation/Footer'
 import ChatWindow from '../navigation/ChatWindow'
@@ -23,8 +23,8 @@ const projectStyles = {
   },
   projects: {
     display: 'flex',
-    flexDirection: 'row',
-    flexWrap: 'wrap'
+    flexDirection: 'row' as  const,
+    flexWrap: 'wrap' as const
   },
   projectCardWrapper: {
     height: '40em',
@@ -32,7 +32,7 @@ const projectStyles = {
     borderRadius: '20px',
     padding: '15px',
     boxShadow: '25px 35px',
-    position: 'relative',
+    position: 'relative' as const,
     border: '2px solid grey',
     margin: '5em',
     display: 'grid',
@@ -51,7 +51,7 @@ const projectStyles = {
     gridColumnEnd: '2',
     gridRowStart: '1',
     gridRowEnd: '2',
-    textAlign: 'center'
+    textAlign: 'center' as const
   },
   cardSummary: {
     gridColumnStart: '1',
@@ -73,7 +73,7 @@ const projectStyles = {
     maxHeight: '80vh',
     aspectRatio: 1,
     margin: 'auto',
-    position: 'relative'
+    position: 'relative' as const
   },
   scatterSize: {
     marginTop: '3em',
@@ -240,7 +240,7 @@ const Project: React.FC = ({
   defaultIndex,
 }: {
   isAnimationActive?: boolean;
-  defaultIndex?: TooltipIndex;
+  defaultIndex?: any /*TooltipIndex*/;
 }) => {
 
   return (

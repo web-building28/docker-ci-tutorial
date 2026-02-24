@@ -24,7 +24,7 @@ const navigationStyles = {
     fontSize: '18px',
   },
   container: {
-    textAlign: 'center',
+    textAlign: 'center' as const,
     display: 'flex',
     height: '10em',
     width: '100vw'
@@ -48,18 +48,18 @@ const navigationStyles = {
   }
 };
 
-interface navigationType { title: string; route: string; key: string }[]
+interface navigationType { title: string; route: string; keyC: string }[]
 
 const navigation: navigationType[] = [
-  {title: 'Project Overview', route: 'Project', key: '1'},
-  {title: 'Regional Statistics', route: 'Regions', key: '2'},
-  {title: 'Historical Tracking', route: 'Tracking', key: '3'},
-  {title: 'Industry Panels', route: 'Industry', key: '4'}
+  {title: 'Project Overview', route: 'Project', keyC: '1'},
+  {title: 'Regional Statistics', route: 'Regions', keyC: '2'},
+  {title: 'Historical Tracking', route: 'Tracking', keyC: '3'},
+  {title: 'Industry Panels', route: 'Industry', keyC: '4'}
 ];
 
 const NavigationButton: React.FC<navigationType> = (webpage) => {
   return (
-    <div key={webpage.key}>
+    <div key={webpage.keyC}>
       <a style={navigationStyles.menuItem} href={`/${webpage.route}`}>{webpage.title}</a>
     </div>
   )
@@ -83,9 +83,9 @@ const Navigation: React.FC = () => {
                   <img style={navigationStyles.containerItem} src={ProfileImage} alt="Cartoon outline of male suit shoulders" width='100' height='60'/>
                 </a>
                 {navigation.map(webpage => (
-                  <div style={navigationStyles.containerItemAndAlignment}>
+                  <div key={webpage.keyC} style={navigationStyles.containerItemAndAlignment}>
                     <NavigationButton
-                      key={webpage.key}
+                      keyC={webpage.keyC}
                       route={webpage.route}
                       title={webpage.title}
                       />
