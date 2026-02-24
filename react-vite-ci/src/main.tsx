@@ -1,5 +1,8 @@
-import ReactDOM from "react-dom/client";
-import { BrowserRouter, Routes, Route } from "react-router";
+import * as React from 'react'
+import { Provider } from 'react-redux'
+import ReactDOM from "react-dom/client"
+import { store } from './store/store.ts'
+import { BrowserRouter, Routes, Route } from "react-router"
 import './index.css'
 import Homepage from './pages/Homepage.tsx'
 import Project from './pages/Project.tsx'
@@ -11,14 +14,18 @@ import Industry from './pages/Industry.tsx'
 const root: HTMLElement | null = document.getElementById("root");
 
 ReactDOM.createRoot(root!).render(
-  <BrowserRouter>
-    <Routes>
-      <Route path="/" element={<Homepage />} />
-      <Route path="/Project" element={<Project />} />
-      <Route path="/Regions" element={<Regions />} />
-      <Route path="/Tracking" element={<Tracking />} />
-      <Route path="/Sources" element={<Sources />} />
-      <Route path="/Industry" element={<Industry />} />
-    </Routes>
-  </BrowserRouter>,
+  <Provider store={store}>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Homepage />} />
+        <Route path="/Project" element={<Project />} />
+        <Route path="/Regions" element={<Regions />} />
+        <Route path="/Tracking" element={<Tracking />} />
+        <Route path="/Sources" element={<Sources />} />
+        <Route path="/Industry" element={<Industry />} />
+      </Routes>
+    </BrowserRouter>
+  </Provider>
 );
+
+const container = document.getElementById('root')

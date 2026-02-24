@@ -5,6 +5,7 @@ import Footer from '../navigation/Footer'
 import ChatWindow from '../navigation/ChatWindow'
 import SolarImage from '../assets/SolarImage.png'
 import Worldwide from '../assets/Worldwide.svg'
+import { useGetDummyListQuery, DummyGetUsers } from '../store/api/getApi'
 
 const homePageStyles = {
   main: {
@@ -56,58 +57,18 @@ const homePageStyles = {
   homeGraph: {
     display: 'flex',
     justifyContent: 'center'
+  },
+  dataTest: {
+    width: '100vw'
   }
 }
-
-const data = [
-  {
-    name: 'Page A',
-    uv: 4000,
-    pv: 2400,
-    amt: 2400,
-  },
-  {
-    name: 'Page B',
-    uv: 3000,
-    pv: 1398,
-    amt: 2210,
-  },
-  {
-    name: 'Page C',
-    uv: 2000,
-    pv: 9800,
-    amt: 2290,
-  },
-  {
-    name: 'Page D',
-    uv: 2780,
-    pv: 3908,
-    amt: 2000,
-  },
-  {
-    name: 'Page E',
-    uv: 1890,
-    pv: 4800,
-    amt: 2181,
-  },
-  {
-    name: 'Page F',
-    uv: 2390,
-    pv: 3800,
-    amt: 2500,
-  },
-  {
-    name: 'Page G',
-    uv: 3490,
-    pv: 4300,
-    amt: 2100,
-  },
-]
 
 const Homepage: React.FC = () => {
 
   const [focusedDataKey, setFocusedDataKey] = useState<string | null>(null);
   const [locked, setLocked] = useState<boolean>(false);
+  
+  const { data, error, isLoading } = useGetDummyListQuery('users')
 
   const onLegendMouseEnter = (payload: LegendPayload) => {
     if (!locked) {
@@ -183,12 +144,12 @@ const Homepage: React.FC = () => {
             >
             <CartesianGrid strokeDasharray="3 3" />
             <XAxis dataKey="name" />
-            <YAxis width="auto" />
+            <YAxis dataKey="address.geo.lat" width="auto" />
             <Tooltip />
             <Legend onMouseEnter={onLegendMouseEnter} onMouseOut={onLegendMouseOut} onClick={onLegendClick} />
-            <Bar dataKey="pv" stackId="a" fill={focusedDataKey == null || focusedDataKey === 'pv' ? '#8884d8' : '#eee'} />
-            <Bar dataKey="amt" stackId="a" fill={focusedDataKey == null || focusedDataKey === 'amt' ? '#82ca9d' : '#eee'} />
-            <Bar dataKey="uv" fill={focusedDataKey == null || focusedDataKey === 'uv' ? '#ffc658' : '#eee'} />
+            <Bar dataKey="address.geo.lat" stackId="a" fill={focusedDataKey == null || focusedDataKey === 'address.geo.lat' ? '#8884d8' : '#eee'} />
+            <Bar dataKey="address.zipcode" stackId="a" fill={focusedDataKey == null || focusedDataKey === 'address.zipcode' ? '#82ca9d' : '#eee'} />
+            <Bar dataKey="address.geo.lng" fill={focusedDataKey == null || focusedDataKey === 'address.geo.lng' ? '#ffc658' : '#eee'} />
           </BarChart>
         </div>
       </main>
