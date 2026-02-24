@@ -5,7 +5,7 @@ import Footer from '../navigation/Footer'
 import ChatWindow from '../navigation/ChatWindow'
 import SolarImage from '../assets/SolarImage.png'
 import Worldwide from '../assets/Worldwide.svg'
-import { useGetDummyListQuery, DummyGetUsers } from '../store/api/getApi'
+import { useGetDummyListQuery } from '../store/api/getApi'
 
 const homePageStyles = {
   main: {
