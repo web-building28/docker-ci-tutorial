@@ -21,11 +21,11 @@ const homePageStyles = {
   introGrid: {
     margin: '20px',
     display: 'grid',
+    position: 'relative' as const,
     gridTemplateColumns: '1fr 1fr',
     gridTemplateRows: '70%',
     gap: '3em',
     textAlign: 'center' as const,
-    height: '650px',
     width: '100%'
   },
   gridItem1: {
@@ -55,11 +55,13 @@ const homePageStyles = {
     fontSize: '28px'
   },
   homeGraph: {
+    margin: 'auto',
+    padding: '3em',
+    position: 'relative' as const,
     display: 'flex',
-    justifyContent: 'center'
-  },
-  dataTest: {
-    width: '100vw'
+    justifyContent: 'center',
+    backgroundColor: 'white',
+    width: '70%'
   }
 }
 

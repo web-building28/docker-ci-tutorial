@@ -10,7 +10,7 @@ const projectStyles = {
   },
   projectsTitle: {
     marginLeft: '2em',
-    marginTop: '2em',
+    marginTop: '30px',
     fontSize: '64px',
     zIndex: '1000'
   },

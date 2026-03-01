@@ -8,13 +8,14 @@ const navigationStyles = {
     backgroundRepeat: 'no-repeat',
     backgroundSize: 'cover',
     height: 'auto',
-    overflow: 'scroll'
+    overflow: 'scroll',
   },
   titles: {
     backgroundColor: 'white',
     margin: '1em'
   },
   websiteTitle: {
+    paddingLeft: '1em',
     fontColor: 'black',
     fontSize: '50px',
     gridColumnStart: '1',
@@ -47,7 +48,7 @@ const navigationStyles = {
     textAlign: 'center' as const,
     display: 'flex',
     height: '10em',
-    width: '100vw'
+    width: '100%'
   },
   containerItem: {
     marginTop: '3em',
@@ -73,8 +74,7 @@ interface navigationType { title: string; route: string; keyC: string }[]
 const navigation: navigationType[] = [
   {title: 'Project Overview', route: 'Project', keyC: '1'},
   {title: 'Regional Statistics', route: 'Regions', keyC: '2'},
-  {title: 'Historical Tracking', route: 'Tracking', keyC: '3'},
-  {title: 'Industry Panels', route: 'Industry', keyC: '4'}
+  {title: 'Historical Tracking', route: 'Tracking', keyC: '3'}
 ];
 
 const NavigationButton: React.FC<navigationType> = (webpage) => {
