@@ -3,11 +3,10 @@ import HeaderBackground from '../assets/HeaderBackground.png'
 
 const navigationStyles = {
   header: {
+    border: '2px solid black',
     backgroundImage: `url(${HeaderBackground})`,
     backgroundRepeat: 'no-repeat',
     backgroundSize: 'cover',
-    marginLeft: '1em',
-    marginRight: '1em',
     height: 'auto',
     overflow: 'scroll'
   },
@@ -18,10 +17,31 @@ const navigationStyles = {
   websiteTitle: {
     fontColor: 'black',
     fontSize: '50px',
+    gridColumnStart: '1',
+    gridColumnEnd: '1',
+    gridRowStart: '1',
+    gridRowEnd: '1',
+    overflowWrap: 'anywhere' as const
   },
   subTitles: {
     fontColor: 'black',
     fontSize: '18px',
+    overflowWrap: 'anywhere' as const
+  },
+  titleGrid: {
+    display: 'grid',
+    gridTemplateColumns: 'repeat(autoFit, minmax(3fr, 1fr))',
+    gridTemplateRows: '1fr',
+    height: 'auto',
+    width: '95%'
+  },
+  gridItemSubtitles: {
+    gridColumnStart: '2',
+    gridColumnEnd: '2',
+    gridRowStart: '1',
+    gridRowEnd: '1',
+    textAlign: 'right' as const,
+    overflowWrap: 'anywhere' as const
   },
   container: {
     textAlign: 'center' as const,
@@ -70,12 +90,14 @@ const Navigation: React.FC = () => {
   return (
     <>
       <header>
-        <section style={navigationStyles.titles}>
+        <div style={navigationStyles.titleGrid}>
           <div style={navigationStyles.websiteTitle}>Solar Panel Industry Statistical Analysis</div>
-          <div style={navigationStyles.subTitles}>Department of Economics</div>
-          <div style={navigationStyles.subTitles}>Reported by Project Data Enterprises</div>
-          <div style={navigationStyles.subTitles}>Director: George Payne</div>
-        </section>
+          <div style={navigationStyles.gridItemSubtitles}>
+            <div style={navigationStyles.subTitles}>Department of Economics</div>
+            <div style={navigationStyles.subTitles}>Reported by Project Data Enterprises</div>
+            <div style={navigationStyles.subTitles}>Director: George Payne</div>
+          </div>
+        </div>
         <div style={navigationStyles.header}>
           <nav>
               <div style={navigationStyles.container}>

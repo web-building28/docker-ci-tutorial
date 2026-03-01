@@ -21,12 +21,12 @@ const homePageStyles = {
   introGrid: {
     margin: '20px',
     display: 'grid',
-    gridTemplateColumns: '50% 50%',
+    gridTemplateColumns: '1fr 1fr',
     gridTemplateRows: '70%',
     gap: '3em',
     textAlign: 'center' as const,
     height: '650px',
-    width: '100vw'
+    width: '100%'
   },
   gridItem1: {
     gridColumnStart: '1',
