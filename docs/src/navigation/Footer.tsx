@@ -1,9 +1,11 @@
 const footerStyles = {
     container: {
         backgroundColor: 'black',
+        paddingTop: '10px',
+        paddingBottom: '10px',
         textAlign: 'left' as const,
         color: 'white',
-        width: '100vw',
+        width: '100%',
         bottom: '0px'
     },
     text: {
